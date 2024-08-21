@@ -1,8 +1,10 @@
 // Write a function named greetUser that takes a user's name as a parameter and returns a greeting message.
 
-function greetUser(name){
+function greetUser(name) {
     // console.log("Hello, " + name);
-    return ("Hello," + name);
+    // return ("Hello," + name);
+    // return (`Hello,` + name + `!`);
+    return `Hello, ${name}!`;
 }
 
 // sample usage - do not modify

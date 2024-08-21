@@ -14,7 +14,7 @@ let studentName = 'Andrei';
 isStudent = Boolean(true);
 let hobbies = ['Paddling', 'Running', 'Cycling'];
 info = {
-    schoolName: "Business College",
+    schoolName: "Business College Helsinki",
     grade: 1
 }
 

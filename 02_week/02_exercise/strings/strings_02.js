@@ -3,7 +3,7 @@ Refine the shoutMyName function to return the name parameter it receives, conver
  */
 
 function shoutMyName(name) {
-    return name;
+    return name.toUpperCase();
 }
 
 // Sample usage - do not modify

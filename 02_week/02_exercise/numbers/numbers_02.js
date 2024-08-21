@@ -6,9 +6,10 @@
 // Sample usage - do not modify
 // console.log(fahrenheitToCelsius(21)); // "-6,1"
 
-function convertFahrenheitToCelsius(degrees) {
-    console.log((degrees - 32) * 5/9);
+function fahrenheitToCelsius(degrees) {
+    // console.log((degrees - 32) * 5/9);
+    return ((degrees - 32) * 5 / 9).toFixed(1)
 }
 // 
 
-convertFahrenheitToCelsius(90);
+console.log(fahrenheitToCelsius(90));

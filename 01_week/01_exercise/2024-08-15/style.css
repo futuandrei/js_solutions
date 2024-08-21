@@ -1,0 +1,11 @@
+h1 {
+    color: #d73d3d;
+}
+
+p {
+    color: #703dd7;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(203, 235, 255), rgb(255, 186, 134));
+}

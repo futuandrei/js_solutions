@@ -11,7 +11,7 @@ const out1 = document.getElementById('output1');
 function fun1() {
     out1.innerHTML = txt1.value;
     //object is paragraph. InnerHTML is property, which will look for contents between open and closed tags
-    console.log("clicked!")
+    console.log("clicked!");
 }
 
 btn1.addEventListener('click', fun1);

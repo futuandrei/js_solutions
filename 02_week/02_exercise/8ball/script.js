@@ -8,6 +8,17 @@ const txt1 = document.getElementById('uquestion'); //'user_question' is ID, scri
 const btn1 = document.getElementById('button1');
 const out1 = document.getElementById('output1');
 
+function sayHello() {
+    let text = " ";
+    if (confirm("Hello there! Press OK")) {
+        text = "Hey, the alert said hello"
+        document.getElementById("feedback").innerHTML = text;
+        document.getElementById("feedback").style.color = "dodgerblue";
+    } else {
+        text = " ";
+    }
+}
+
 function fun1() {
     out1.innerHTML = txt1.value;
     //object is paragraph. InnerHTML is property, which will look for contents between open and closed tags

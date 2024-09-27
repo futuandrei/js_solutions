@@ -8,18 +8,18 @@ Add at least two book objects to this collection.
 
 // Your code here
 
-const library = [
-    {
-        title: "To Kill a Mockingbird",
-        author: "Harper Lee",
-        yearPublished: 1960
-    },
-    {
-        title: "1984",
-        author: "George Orwell",
-        yearPublished: 1949
-    }
-];
+// const library = [
+//     {
+//         title: "To Kill a Mockingbird",
+//         author: "Harper Lee",
+//         yearPublished: 1960
+//     },
+//     {
+//         title: "1984",
+//         author: "George Orwell",
+//         yearPublished: 1949
+//     }
+// ];
 
 /* Task 2
 Access the `title` of the first book in the `library` collection and log it to the console.
@@ -27,7 +27,8 @@ Modify the `yearPublished` for the second book in the collection to a new year, 
 */
 
 // Your code here
-console.log(library[0].title);
+
+// console.log(library[0].title);
 
 /* Task 3
 Use dot notation to add a new property `genres` (an array of strings) to the first book in the `library`.
@@ -35,9 +36,10 @@ Use bracket notation to add a boolean property `isAvailable` to the same book, i
 */
 
 // Your code here
-library[0].genres = [];
-library[0]["isAvailable"] = true;
-console.log(library[0]);
+
+// library[0].genres = [];
+// library[0]["isAvailable"] = true;
+// console.log(library[0]);
 
 
 /* Task 4
@@ -81,10 +83,19 @@ function createBook(title, author, yearPublished, genres) {
 let newBook = createBook("Moby Dick", "Herman Melville", 1851, ["Fiction", "Adventure", "Classic"]);
 
 // Log the new book object to the console
-console.log(newBook);
+// console.log(newBook);
 
 
 /* Task 6
 Convert the `library` collection to a JSON string and log it to the console.
 Parse the JSON string back into a JavaScript object and log the first book's title to the console.
 */
+
+
+// Storing data
+const myJSON = JSON.stringify(newBook);
+// console.log(myJSON);
+
+// Retrieving data
+let obj = JSON.parse(myJSON);
+console.log(obj);

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    color: #282828;
+    background: #FFF7F5;   
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px 0px 20px;
+    margin-bottom: 40px;
+}
+
+/* form {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+} */
+
+.fields {
+    /* width: 50%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    display:grid;
+    justify-items: end;
+}
+
+.textfield {
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    /* background-color: aqua; */
+    /* padding: 10px;    */
+}
+
+input {
+    height: 32px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3cac7;
+    border-radius: 2px;
+    padding: 0px 5px 0px 5px;
+    font-family: 'Poppins';
+}
+
+button {
+    padding: 12px 20px 10px 20px;
+    background-color: #d0603b;
+    color: #fff;
+    font-size:medium ;
+    border-style: none;
+    border-radius: 2px;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: rgb(129, 67, 46);
+}
+
+table {
+    background-color: #f1e7e3;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3cac7;
+    margin-top: 20px;
+}
+
+table th {
+    background-color: #f1e7e3;
+    padding: 10px;
+}
+
+table td {
+    background-color: #fff;
+    border-style: none;
+    padding: 10px;
+}
+
+footer {
+    /* background-color: #f1e7e3; */
+    /* height: 100%;
+    align-self: center;
+    justify-content: center; */
+    margin-top: 40px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    text-align: center;  
+}

@@ -1,0 +1,207 @@
+:root {
+    /* neutrals */
+    --crl-neutral-white: #fff;
+    --crl-neutral-grey-light: #e2e2e2;
+    --crl-neutral-grey-medium: #b5b5b5;
+    --crl-neutral-grey-medium-dark: #868686;
+    --crl-neutral-grey-dark: #525252;
+    /* accent */
+    --crl-accent-primary-30: hsl(240, 100%, 30%);
+    --crl-accent-primary-40: hsl(240, 100%, 40%);
+    --crl-accent-primary-50: blue;
+    --crl-accent-primary-60: hsl(240, 100%, 60%);
+    --crl-accent-primary-70: hsl(240, 100%, 70%);
+    --crl-accent-primary-80: hsl(240, 100%, 80%);
+    --crl-accent-secondary-rose-30: hsl(351, 100%, 30%);
+    --crl-accent-secondary-rose-50: hsl(351, 100%, 50%);
+    --crl-accent-secondary-rose-80: hsl(351, 100%, 80%);
+    --crl-accent-secondary-rose-90: hsl(351, 100%, 90%);
+    --crl-accent-yellow-light: rgb(255, 224, 163);
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    overscroll-behavior: none;
+}
+
+body  {
+    background-color: #e4e7eb;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header, footer {
+    padding: 2rem;
+}
+
+main {
+    padding: 0rem;
+}
+
+header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    /* z-index: 1; */
+    
+}
+
+nav ul li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+section {
+    height: 45vh;
+    scroll-margin-top: 5rem;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#home {
+    margin: 0;
+    border-style: none;
+    border-radius: 0;
+}
+
+/* section:hover {
+    transform: scale(1.02);
+    transition: transform .1s;
+    transition-timing-function: ease-in;
+} */
+
+section:first-child {
+    /* background-color: var(--crl-accent-primary-30); */
+    /* color: var(--crl-neutral-grey-light); */
+    background: url(assets/jeremy-bishop-iftBhUFfecE-unsplash.jpg)
+    no-repeat scroll center center/cover;
+    /* !!!!! NOTES: no-repeat fixed center/cover*/
+    /* object-fit:cover;
+    background-position: center center; */
+    /* padding: 0; */
+    
+}
+
+section:nth-child(2) {
+    background-color: var(--crl-accent-primary-80);
+}
+
+section:nth-child(3) {
+    background-color: var(--crl-accent-yellow-light);
+}
+
+/* #home {
+    background-color: var(--crl-neutral-white);
+} */
+
+/* #projects {
+    background-color: var(--crl-neutral-white);
+} */
+
+#about {
+    background-color: var(--crl-neutral-white);
+}
+#contact {
+    background-color: var(--crl-neutral-white);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 1rem 2rem;
+    background-color: var(--crl-accent-primary-60);
+    color: white;
+    font-size: inherit;
+    margin-top: 20px;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+
+.overlay.visible {
+    display:flex;
+}
+
+.modal {
+    background-color: var(--crl-accent-secondary-rose-90);
+    color: var(--crl-neutral-grey-dark);
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--crl-neutral-grey-dark);
+    padding: 2rem;
+    position: relative;
+}
+
+#closeBtn {
+    display: block;
+    top: 1rem;
+    right: 1rem;
+}
+
+#backTop {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+}
+
+#backTop:hover {
+    background-color: var(--crl-accent-primary-40)
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .mobile {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.responsive {
+        display: block;
+        /* flex-direction: column; */
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        background-color: var(--crl-neutral-white);
+        width: 100%;
+        padding: 20px;
+        
+    }
+
+    ul.responsive li {
+        display: block;
+        margin: 2rem 1rem;
+    }
+}

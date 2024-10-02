@@ -4,24 +4,53 @@
 const searchCarForm = document.querySelector('#searchCar');
 const addCarForm = document.querySelector('#addCar');
 const cars = [];
+let current_year = new Date().getFullYear(); // added current year. Replace this with dynamic, auto-updated value!  
 
 // Declare car class 
 class Car {
-    constructor(license, maker, model, year, owner, price, color) {
+    constructor(license, maker, model, year, owner, price, discPrice, color) {
         this.license = license;
         this.maker = maker;
         this.model = model;
         this.year = year; // added year variable as required
         this.owner = owner;
         this.price = price;
+        this.discPrice = discPrice;
         this.color = color;
     }
 }
 
-// Function
+// Search function
 const searchCar = (e) => {
     e.preventDefault();
-    console.log('search car was triggered');
+    const license = document.querySelector('#license_plate').value;
+    let carFound = false;
+
+    for (let i = 0; i < cars.length; i++) {
+        if (cars[i].license === license) {
+            document.querySelector('#searchResult').innerHTML = `Car found: Maker: ${cars[i].maker}, Model: ${cars[i].model}, Owner: ${cars[i].owner}`;
+            carFound = true; // Car is found, so set flag to true
+            // break; // Exit loop once the car is found
+        }
+    }
+
+    if (!carFound) {
+        document.querySelector('#searchResult').innerHTML = "No car found";
+    }
+};
+
+// License plate (filter)
+
+// Function to calculater discounted price
+function calcDiscPrice(year, price) {
+    // if to check the age of car age is more than 10 years. If so, car price is lower by 15 %.
+    // car year: 2013, current year 2024. Discount applicable.
+    // car year: 1980, current year 2024. Discount applicable.
+    // car year: 2020, current year 2024. Discount NOT applicable.
+    if (year < (current_year - 10)) {
+        const discounted = price * 0.85;
+        return discounted;
+    }
 }
 
 const addCar = (e) => {
@@ -34,9 +63,8 @@ const addCar = (e) => {
     let year = document.getElementById('year').value; // added year variable
     let owner = document.getElementById('current_owner').value;
     let price = document.getElementById('price').value;
+    // let discPrice = "discounted price"; // added discounted price variable
     let color = document.getElementById('color').value;
-
-    let current_year = 2024; // added current year. Replace this with dynamic, auto-updated value!    
 
     // creating new object
     try {
@@ -58,9 +86,10 @@ const addCar = (e) => {
         }
 
         // Adding the car
-        const newCar = new Car(license, maker, model, year, owner, price, color);
+        const newCar = new Car(license, maker, model, year, owner, price, calcDiscPrice(year, price), color);
         cars.push(newCar);
         displayTable();
+
         // Empty values
         license = document.getElementById('license').value = '';
         maker = document.getElementById('maker').value = '';

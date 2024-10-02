@@ -24,3 +24,5 @@ Solved this by inserting "required" into HTML.
 
 Added variable to all required places.
 Added "if" to check that year is a number.
+
+## Created a function to calculate discounted price.

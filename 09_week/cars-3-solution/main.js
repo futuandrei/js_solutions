@@ -78,17 +78,26 @@ const searchCar = (e) => {
 };
 
 
-// Function to calculater discounted price
+// Function to calculate discounted price
 function calcDiscPrice(year, price) {
     // if to check the age of car age is more than 10 years. If so, car price is lower by 15 %.
-    // car year: 2013, current year 2024. Discount applicable.
-    // car year: 1980, current year 2024. Discount applicable.
-    // car year: 2020, current year 2024. Discount NOT applicable.
     if (year < (current_year - 10)) {
         const discounted = price * 0.85;
         return discounted;
+    } else {
+        return "No discount";
     }
 }
+
+const displayMessage = (message, type = "success") => {
+    const messageElement = document.querySelector("#message");
+    messageElement.textContent = message;
+    messageElement.className = type;
+    setTimeout(() => {
+        messageElement.textContent = "";
+        messageElement.className = "";
+    }, 3000);
+};
 
 const addCar = (e) => {
     e.preventDefault();
@@ -127,6 +136,11 @@ const addCar = (e) => {
         cars.push(newCar);
         displayTable();
 
+        // Adding the car object to local storage
+        const stringifiedCars = JSON.stringify(cars); // Changing car object to string 
+        localStorage.setItem("cars", stringifiedCars); // Storing locally
+
+
         // Empty values
         license = document.getElementById('license').value = '';
         maker = document.getElementById('maker').value = '';
@@ -143,11 +157,30 @@ const addCar = (e) => {
 
 }
 
+// Load cars object from local storage and update table
+const loadCarsFromLocalStorage = () => {
+    const storedCars = localStorage.getItem('cars');
+    if (storedCars) {
+        const parsedCars = JSON.parse(storedCars);
+        parsedCars.forEach(carData => {
+            cars.push(new Car(carData.license,
+                carData.maker,
+                carData.model,
+                carData.year,
+                carData.owner, // Updated to use correct owner property
+                carData.price,
+                carData.discPrice, // Added discount price
+                carData.color));
+        });
+        displayTable();
+    }
+};
+
 // Triggered every time new car is added
 const displayTable = () => {
     const table = document.querySelector('#carsTable');
     table.innerHTML = table.rows[0].innerHTML;
-    cars.forEach(car => {
+    cars.forEach((car, index) => {
         // creates row for every element
         const row = table.insertRow(-1);
 
@@ -156,9 +189,25 @@ const displayTable = () => {
             const cell = row.insertCell(-1);
             cell.textContent = text;
         })
+
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete");
+        deleteButton.addEventListener("click", () => deleteCar(index));
+        row.insertCell(-1).appendChild(deleteButton);
     })
 }
+
+// Delete car function
+const deleteCar = (index) => {
+    cars.splice(index, 1);
+    localStorage.setItem('cars', JSON.stringify(cars));
+    displayTable();
+    displayMessage("Car deleted successfully!");
+};
 
 // Event listeners
 addCarForm.addEventListener('submit', addCar);
 searchCarForm.addEventListener('submit', searchCar);
+window.addEventListener('load', loadCarsFromLocalStorage);

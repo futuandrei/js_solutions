@@ -26,3 +26,20 @@ Added variable to all required places.
 Added "if" to check that year is a number.
 
 ## Created a function to calculate discounted price.
+
+- Created a dynamically updated year variable:
+
+let current_year = new Date().getFullYear();
+
+## Updated search car function:
+
+- Query selector to get license plate value
+
+### Improvements / considerations
+
+If there are multiple cars, consider using variable(flag) to store boolean value to store information whether car was found.
+
+let carFound = false;
+
+> carFound = true;
+> break;

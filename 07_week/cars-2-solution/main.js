@@ -26,20 +26,57 @@ const searchCar = (e) => {
     const license = document.querySelector('#license_plate').value;
     let carFound = false;
 
-    for (let i = 0; i < cars.length; i++) {
-        if (cars[i].license === license) {
-            document.querySelector('#searchResult').innerHTML = `Car found: Maker: ${cars[i].maker}, Model: ${cars[i].model}, Owner: ${cars[i].owner}`;
-            carFound = true; // Car is found, so set flag to true
-            // break; // Exit loop once the car is found
+    // Regex to match valid license plates (letters, numbers, hyphens)
+    const licenseRegex = /^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$/;
+
+    // try / catch
+    try {
+        if (!license) {
+            throw "License can not be empty!"
+        }
+        // check if database is empty
+        if (cars.length === 0) {
+            throw "Database is empty! Add car to database before search!"
+        }
+        // Regex testing
+        if (!licenseRegex.test(license)) {
+            throw "Invalid license plate format. Only letters, numbers, and hyphens are allowed."
+        }
+
+        for (let i = 0; i < cars.length; i++) {
+            // If car is found and has discounted price
+            if (cars[i].license === license && cars[i].discPrice) {
+                console.log("car found");
+                console.log(cars[i]);
+                document.querySelector('#searchResult').innerHTML = `Car found: <p>Maker: ${cars[i].maker}</p> 
+                <p>Model: ${cars[i].model}</p> 
+                <p>Owner: ${cars[i].owner}</p>
+                <p>Discounted price: ${cars[i].discPrice}</p>
+                `;
+                carFound = true;
+            }
+            else if (cars[i].license === license) {
+                document.querySelector('#searchResult').innerHTML = `Car found: Maker: ${cars[i].maker}, Model: ${cars[i].model}, Owner: ${cars[i].owner}`;
+                carFound = true; // Car is found, so set 
+                // return;
+            }
+            else if (!carFound) {
+                // When no car is found, this is returned after looping through all cars
+                // document.querySelector('#searchResult').style.color = "red";
+                console.log("Car not found")
+                document.querySelector('#searchResult').innerHTML = "No car found with the given license plate";
+            }
         }
     }
-
-    if (!carFound) {
-        document.querySelector('#searchResult').innerHTML = "No car found";
+    catch (error) {
+        // alert(error);
+        // document.querySelector('#searchResult').style.color = "red";
+        document.querySelector('#searchResult').innerHTML = error;
+        // console.log(error);
     }
+
 };
 
-// License plate (filter)
 
 // Function to calculater discounted price
 function calcDiscPrice(year, price) {
@@ -85,7 +122,7 @@ const addCar = (e) => {
             throw "year should be between 1886 - 2024!"
         }
 
-        // Adding the car
+        // Adding the car to array cars
         const newCar = new Car(license, maker, model, year, owner, price, calcDiscPrice(year, price), color);
         cars.push(newCar);
         displayTable();

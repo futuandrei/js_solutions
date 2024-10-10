@@ -70,6 +70,24 @@ input {
     margin: 1rem 1rem 1rem 0.5rem;
 }
 
+/* Select field */
+select {
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+)no-repeat calc(100% - 10px) 50%;
+
+    appearance: none;
+
+
+    font-family: inherit;
+    font-size: inherit;
+    /* padding: 10px 10px 10px 5px; */
+    /* display: block; */
+    padding: 0.625rem;
+    border: 1px solid rgb(191, 191, 191);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
 main {
     display: flex;
     flex-wrap: wrap;
@@ -116,29 +134,56 @@ button:hover {
     background-color: rgb(255, 101, 50);
 }
 
+button_table {
+    padding: 10px;
+    /* background-color: #d0603b; */
+    color: #ff0000;
+    font-size:medium ;
+    /* border-style: none;
+    border-radius: 2px; */
+    margin: 1rem 0 1rem;
+    /* box-shadow: 0 0 5px #ac9c9c; */
+    word-break: normal;
+}
+
+button_table:hover {
+    color:#a50b00;
+    /* background-color: rgb(254, 166, 136); */
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
-    background-color: #f1e7e3;
+    /* background-color: #f1e7e3; */
+    /* border-style: solid;
+    border-width: 1px;
+    border-color: #d3cac7; */
+}
+
+td,
+th {
     border-style: solid;
     border-width: 1px;
     border-color: #d3cac7;
+    text-align: left;
+    padding: 8px;
+    word-break: break-all;
 }
 
+/* Corrected */
+th {
+    font-weight: bold;
+    background-color: hsl(17, 33%, 82%);
+    color: #282828;
+    /* text-transform: uppercase; */
+  }
 
-table th {
+tr:nth-child(even) {
     background-color: #f1e7e3;
-    padding: 10px;
-}
-
-table td {
-    background-color: #fff;
-    border-style: none;
-    padding: 10px;
-}
+  }
 
 #message {
     margin-top: 1rem;

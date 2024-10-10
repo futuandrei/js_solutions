@@ -78,7 +78,7 @@ const searchCar = (e) => {
 };
 
 
-// Function to calculate discounted price
+// Function to calculater discounted price
 function calcDiscPrice(year, price) {
     // if to check the age of car age is more than 10 years. If so, car price is lower by 15 %.
     if (year < (current_year - 10)) {
@@ -140,6 +140,8 @@ const addCar = (e) => {
         const stringifiedCars = JSON.stringify(cars); // Changing car object to string 
         localStorage.setItem("cars", stringifiedCars); // Storing locally
 
+        // Add car message
+        displayMessage("Car added successfully!");
 
         // Empty values
         license = document.getElementById('license').value = '';
@@ -191,7 +193,7 @@ const displayTable = () => {
         })
 
         // Delete button
-        const deleteButton = document.createElement("button");
+        const deleteButton = document.createElement("button_table");
         deleteButton.textContent = "Delete";
         deleteButton.classList.add("delete");
         deleteButton.addEventListener("click", () => deleteCar(index));

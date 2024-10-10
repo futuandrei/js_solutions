@@ -1,0 +1,10 @@
+table th {
+    /* background-color: #f1e7e3; */
+    padding: 10px;
+}
+
+table td {
+    background-color: #a55757;
+    border-style: none;
+    padding: 10px;
+}

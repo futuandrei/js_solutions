@@ -11,6 +11,18 @@ const zooAnimals = [
 	{ name: "Milo", age: 2, gender: "Male", species: "Meerkat", type: "Mammal", description: "A mischievous meerkat who is always on the lookout. Milo loves digging burrows and foraging for insects." }
 ];
 
+// Added class Animal
+class Animal {
+	constructor(name, age, gender, species, type, description) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.species = species;
+		this.type = type;
+		this.description = description;
+	}
+}
+
 /* when HTML page is first loaded, show all animals */
 // Wait for the DOM to load
 // document.addEventListener('DOMContentLoaded', function () {
@@ -19,23 +31,63 @@ const zooAnimals = [
 document.addEventListener('DOMContentLoaded', displayAnimals(zooAnimals));
 
 
-
-
 /* functions */
 
 // show the animals given as a parameter (array of objects) in the animal display area (#animalDisplay)
 function displayAnimals(animals) {
-	document.getElementById("animalDisplay").innerHTML = zooAnimals[];
-	// YOUR CODE HERE
-	// empty the display area first
-	// loop through the "animals" array and add HTML elements for each animal
+
+	// Select DOM element <div> 
+	const animalDisplay = document.getElementById('animalDisplay');
+	// console.log(`Got ${animalDisplay}`); // -> Got [object HTMLDivElement]
+
+	// Clear the element, only once
+	animalDisplay.innerHTML = "";
+
+	/* ------------ Add Card container ------------ */
+
+	const cardContainer = document.createElement("div");
+	cardContainer.className = "animalDisplay";  // Assign class for styling
+
+	for (let i = 0; i < animals.length; i++) {
+		// Create card item for each element
+		const newCard = document.createElement("div");
+		newCard.className = "card";  // Assign class for styling
+
+		// Append content to card
+		const itemData = document.createElement("p");
+		itemData.textContent = `${animals[i].name} ${animals[i].age} ${animals[i].gender} ${animals[i].species} ${animals[i].type} ${animals[i].description}`;
+		newCard.appendChild(itemData);
+
+		// Add the content to each card
+		newCard.appendChild(itemData);
+
+		// Add element to DOM
+		animalDisplay.appendChild(newCard);
+
+	}
+
 }
 
 // add an animal with the given parameters to the zooAnimals array (don't forget to call the displayAnimals function to refresh the list)
 function addAnimal(name, age, gender, species, type, description) {
 	// YOUR CODE HERE
+	console.log(`Received parameters: ${name} ${age} ${gender} ${species} ${type} ${description}`);
+
 	// create a new object and push it to the array
+	const newAnimal = new Animal(name, age, gender, species, type, description);
+	zooAnimals.push(newAnimal);
+	// console.log(newAnimal);
+	// console.log(zooAnimals);
 	// display all animals and reset filters
+	displayAnimals(zooAnimals);
+
+	//Empty values
+	name = document.getElementById('name').value = '';
+	age = document.getElementById('age').value = '';
+	gender = document.getElementById('gender').value = '';
+	species = document.getElementById('species').value = '';
+	type = document.getElementById('type').value = '';
+	description = document.getElementById('description').value = '';
 }
 
 /* event listeners */
@@ -72,6 +124,17 @@ document.querySelector("#addAnimalButton").addEventListener("click", function (e
 	ev.preventDefault();    // by naming the event parameter (ev) in the line above, we can access it and prevent the default behavior of a submit button, i.e. sending the form, from happening
 
 	// YOUR CODE HERE
+	let name = document.getElementById('name').value;
+	let age = document.getElementById('age').value;
+	let gender = document.getElementById('gender').value;
+	let species = document.getElementById('species').value;
+	let type = document.getElementById('type').value;
+	let description = document.getElementById('description').value;
+
+	addAnimal(name, age, gender, species, type, description);
+
+	// console.log(`Got: ${name} ${age} ${gender} ${species} ${type} ${description}`);
+
 });
 
 

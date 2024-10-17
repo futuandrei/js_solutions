@@ -17,8 +17,8 @@ const list = document.getElementById("fruitList")
 
 function fruitList() {
     console.log(input.value);//input does not work with textContent
-    const newElement = document.createElement('li');
-    newElement.textContent = input.value;
+    const newElement = document.createElement('li'); //create new element <li>
+    newElement.textContent = input.value; // assign new element the input value
     list.appendChild(newElement) //add a new element in the list
 
     input.value = '' //input field is cleared and you can add the next input

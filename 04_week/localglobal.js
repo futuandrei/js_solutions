@@ -1,12 +1,12 @@
 let local = 'I am global variable';
 
-function exampleFunction1() {
+function exampleFunction() {
     local = 'I am local variable'
     return local;
 }
 
-function exampleFunction1() {
-    local = 'I am local variable'
+function exampleFunction() {
+    local = 'I am global variable'
     return local;
 }
 

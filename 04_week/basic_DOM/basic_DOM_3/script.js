@@ -20,8 +20,20 @@ The event listener's function should:
 - Update the textContent of the displayText <div> to match the input field's value.
 - To have the display update more dynamically (as the user types), consider using the input event instead of or in addition to the change event.  */
 
-const input = document.querySelector('#inputText')
+const input = document.querySelector('#inputText');
+const display = document.querySelector('#displayText');
 
-input.addEventListener('click'); {
-    document.getElementById("text").innerHTML = "Hello World";
+input.addEventListener('input', updateValue);
+
+
+
+// addEventListener('click', doSomething());
+
+// 1. updateValue function takes e object as a parameter
+// 2. Inside the function, e.target refers to the input field that triggered the event
+// 3. This value is then assigned to the textContent of the log element, which updates its displayed content to reflect the input field's value
+
+function updateValue(e) {
+    // console.log("Something happening");
+    display.textContent = e.target.value;
 }

@@ -1,17 +1,27 @@
+"use strict";
 
-const priceElement = document.querySelector('.price-display span');
-const priceBanner = document.querySelector('.price-banner');
-
+const priceElement = document.querySelector('.price-display span'); /* Price text */
+const priceBanner = document.querySelector('.price-banner'); /* Price text inside an image */
 
 function calcPrice() {
-
     const pancakeType = document.getElementById('type');
     const toppingCheckboxes = document.querySelectorAll('.customization-section:nth-of-type(2) input[type="checkbox"]');
     const extrasCheckboxes = document.querySelectorAll('.customization-section:nth-of-type(3) input[type="checkbox"]');
+    const deliveryOptions = document.querySelectorAll('.customization-section:nth-of-type(4) input[type="radio"]');
+    const customerNameInput = document.getElementById('customerName'); // Customer name
+
+    //Error handling
+    // if (deliveryOptions === null) {
+    //     console.log("Element not found");
+    // } else {
+    //     console.log("Element found:", priceElement);
+    // }
 
     let pancakeBasePrice = 0;
     let toppingsPrice = 0;
     let extrasPrice = 0;
+    let deliveryPrice = 0;
+    let customerName; // Customer name
     let totalPrice = 0;
 
     // Get base price
@@ -27,13 +37,21 @@ function calcPrice() {
     // Get extras price
     extrasCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
-            // console.log(checkbox.value);
             extrasPrice += parseFloat(checkbox.value);
         }
     })
 
-    totalPrice = pancakeBasePrice + toppingsPrice + extrasPrice;
-    // console.log('Total toppings price:', toppingsPrice);
+    // Get customer name
+    customerName = customerNameInput.value; // Customer name
+
+    // Get delivery options
+    deliveryOptions.forEach(option => {
+        if (option.checked) {
+            deliveryPrice += parseFloat(option.value);
+        }
+    })
+
+    totalPrice = pancakeBasePrice + toppingsPrice + extrasPrice + deliveryPrice;
     updatePrice(totalPrice);
 }
 
@@ -64,6 +82,10 @@ window.onload = function () {
     const toppingCheckboxes = document.querySelectorAll('.customization-section:nth-of-type(2) input[type="checkbox"]');
     // Get extras checkboxes
     const extrasCheckboxes = document.querySelectorAll('.customization-section:nth-of-type(3) input[type="checkbox"]');
+    // Get delivery options
+    const deliveryOptions = document.querySelectorAll('.customization-section:nth-of-type(4) input[type="radio"]');
+    // Get customer name input
+    const customerNameInput = document.getElementById('customerName');
 
     //  ------ Add event listeners ------
 
@@ -77,5 +99,26 @@ window.onload = function () {
     extrasCheckboxes.forEach((extras) => {
         extras.addEventListener('change', calcPrice);
     });
+    // Event listener for delivery options
+    deliveryOptions.forEach((options) => {
+        options.addEventListener('change', calcPrice);
+    });
+    // Event listener for customer name
+    customerNameInput.addEventListener('change', calcPrice);
 }
+
+// ------ Error check ------
+
+// if (priceElement === null) {
+//     console.log("Element not found");
+// } else {
+//     console.log("Element found:", priceElement);
+// }
+
+// if (priceBanner === null) {
+//     console.log("Element not found");
+// } else {
+//     console.log("Element found:", priceElement);
+// }
+
 
